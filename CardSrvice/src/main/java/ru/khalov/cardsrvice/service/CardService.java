@@ -8,6 +8,7 @@ import org.springframework.web.server.ResponseStatusException;
 import ru.khalov.cardsrvice.dto.request.CreateCardRequest;
 import ru.khalov.cardsrvice.dto.request.DepositRequest;
 import ru.khalov.cardsrvice.dto.responce.CardResponse;
+import ru.khalov.cardsrvice.dto.responce.ChargeResponse;
 import ru.khalov.cardsrvice.entity.Card;
 import ru.khalov.cardsrvice.repository.CardRepository;
 
@@ -66,5 +67,25 @@ public class CardService {
         cardRepository.flush();
 
         return "Deposit done!";
+    }
+
+    //// внутренние метод ////
+
+    @Transactional
+    public ChargeResponse debit(Long userId, BigDecimal amount){
+        Card card = cardRepository.findByUserIdForUpdate(userId).orElse(null);
+
+        if(card == null){
+            return ChargeResponse.declined("Card not found");
+        }
+
+        if(card.getBalance().compareTo(amount) < 0){
+            return ChargeResponse.declined("There isn’t enough money in the balance.");
+        }
+
+        card.setBalance(card.getBalance().subtract(amount));
+        cardRepository.flush();
+
+        return ChargeResponse.ok();
     }
 }
