@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="ApiGateway" />
+      </profile>
+      <profile name="Annotation profile for OrderRequestService" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.48/lombok-1.18.48.jar" />
+        </processorPath>
+        <module name="AuthService" />
+        <module name="InventoryRequesrService" />
+        <module name="OrderRequestService" />
+        <module name="OrderCommandService" />
+        <module name="AnalyticsService" />
+        <module name="InventoryCommandsService" />
+        <module name="CardSrvice" />
+        <module name="PaymantService" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="AnalyticsService" options="-parameters" />
+      <module name="ApiGateway" options="-parameters" />
+      <module name="AuthService" options="-parameters" />
+      <module name="CardSrvice" options="-parameters" />
+      <module name="InventoryCommandsService" options="-parameters" />
+      <module name="InventoryRequesrService" options="-parameters" />
+      <module name="OrderCommandService" options="-parameters" />
+      <module name="OrderRequestService" options="-parameters" />
+      <module name="PaymantService" options="-parameters" />
+    </option>
+  </component>
+</project>
