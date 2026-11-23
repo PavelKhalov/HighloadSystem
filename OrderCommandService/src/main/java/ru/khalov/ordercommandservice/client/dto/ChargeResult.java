@@ -1,6 +1,5 @@
 package ru.khalov.ordercommandservice.client.dto;
 
-import ru.khalov.ordercommandservice.util.CancellationReason;
 
 public record ChargeResult(
         boolean success

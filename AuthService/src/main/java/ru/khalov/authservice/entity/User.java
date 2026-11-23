@@ -35,10 +35,11 @@ public class User {
 
     public User(){}
 
-    public User(String email, String username, String password){
+    public User(String email, String username, String password, Role role){
         this.email = email;
         this.username = username;
         this.password = password;
+        this.role = role;
     }
 
     public UUID getId() {return id;}

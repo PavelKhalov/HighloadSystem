@@ -11,10 +11,8 @@ import ru.khalov.authservice.repository.UserRepository;
 import ru.khalov.authservice.dto.request.LoginRequest;
 import ru.khalov.authservice.dto.request.RegisterRequest;
 import ru.khalov.authservice.dto.response.TokenResponse;
-import ru.khalov.authservice.dto.response.UserResponse;
 import ru.khalov.authservice.entity.User;
 
-import java.util.Locale;
 
 @Service
 public class AuthService {
@@ -41,7 +39,7 @@ public class AuthService {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "Email or username already exists");
         }
 
-        User user = userRepository.save(new User(email, username.toLowerCase(), req.password()));
+        User user = userRepository.save(new User(email, username.toLowerCase(), req.password(), req.role()));
         log.info("Registration successful!");
         return new TokenResponse(tokenService.createToken(user.getId().toString(), user.getPublicId(), user.getRole().name()));
     }

@@ -6,17 +6,17 @@
       <list>
         <option value="$PROJECT_DIR$/ApiGateway/pom.xml" />
         <option value="$PROJECT_DIR$/AuthService/pom.xml" />
-        <option value="$PROJECT_DIR$/CardSrvice/pom.xml" />
-        <option value="$PROJECT_DIR$/OrderCommandService/pom.xml" />
-        <option value="$PROJECT_DIR$/InventoryCommandsService/pom.xml" />
-        <option value="$PROJECT_DIR$/OrderRequestService/pom.xml" />
+        <option value="$PROJECT_DIR$/CardService/pom.xml" />
         <option value="$PROJECT_DIR$/PaymantService/pom.xml" />
-        <option value="$PROJECT_DIR$/InventoryRequesrService/pom.xml" />
         <option value="$PROJECT_DIR$/AnalyticsService/pom.xml" />
+        <option value="$PROJECT_DIR$/OrderCommandService/pom.xml" />
+        <option value="$PROJECT_DIR$/OrderRequestService/pom.xml" />
+        <option value="$PROJECT_DIR$/CatalogCommandsService/pom.xml" />
+        <option value="$PROJECT_DIR$/InventoryRequesrService/pom.xml" />
+        <option value="$PROJECT_DIR$/CatalogQueriesService/pom.xml" />
+        <option value="$PROJECT_DIR$/OrderQueriesService/pom.xml" />
       </list>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" project-jdk-name="26" project-jdk-type="JavaSDK">
-    <output url="file://$PROJECT_DIR$/out" />
-  </component>
+  <component name="ProjectRootManager" version="2" project-jdk-name="26" project-jdk-type="JavaSDK" />
 </project>

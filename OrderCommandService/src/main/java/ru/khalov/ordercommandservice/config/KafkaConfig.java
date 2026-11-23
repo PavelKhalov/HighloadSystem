@@ -1,8 +1,10 @@
 package ru.khalov.ordercommandservice.config;
 
+import org.apache.kafka.clients.admin.NewTopic;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.TopicPartition;
+import org.apache.kafka.common.config.TopicConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 import org.springframework.core.retry.RetryException;
 import org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory;
+import org.springframework.kafka.config.TopicBuilder;
 import org.springframework.kafka.core.*;
 import org.springframework.kafka.listener.DeadLetterPublishingRecoverer;
 import org.springframework.kafka.listener.DefaultErrorHandler;
@@ -45,19 +48,26 @@ public class KafkaConfig {
     }
 
     @Bean
-    public ProducerFactory<String, Object> dltProducerFactory(){
+    public ProducerFactory<String, Object> producerFactory(){
         Map<String, Object> config = new HashMap<>();
-
         config.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, env.getProperty("spring.kafka.bootstrap-servers"));
         config.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
         config.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JacksonJsonSerializer.class);
 
+        config.put(ProducerConfig.LINGER_MS_CONFIG, 0);
+        config.put(ProducerConfig.DELIVERY_TIMEOUT_MS_CONFIG, 300000);
+        config.put(ProducerConfig.REQUEST_TIMEOUT_MS_CONFIG, 10000);
+
+        config.put(ProducerConfig.ENABLE_IDEMPOTENCE_CONFIG, true);
+        config.put(ProducerConfig.MAX_IN_FLIGHT_REQUESTS_PER_CONNECTION, 5);
+
         return new DefaultKafkaProducerFactory<>(config);
     }
 
+
     @Bean
     public KafkaTemplate<String, Object> kafkaTemplate(){
-        return new KafkaTemplate<>(dltProducerFactory());
+        return new KafkaTemplate<>(producerFactory());
     }
 
     @Bean
@@ -80,5 +90,25 @@ public class KafkaConfig {
         containerFactory.setCommonErrorHandler(err);
 
         return containerFactory;
+    }
+
+    @Bean
+    NewTopic orderTopic(){
+        return TopicBuilder
+                .name("order-topic")
+                .partitions(3)
+                .replicas(2)
+                .config(TopicConfig.MIN_IN_SYNC_REPLICAS_CONFIG, "2")
+                .build();
+    }
+
+    @Bean
+    NewTopic orderTopicDlt(){
+        return TopicBuilder
+                .name("order-topic.DLT")
+                .partitions(3)
+                .replicas(2)
+                .config(TopicConfig.MIN_IN_SYNC_REPLICAS_CONFIG, "2")
+                .build();
     }
 }

@@ -41,27 +41,27 @@ services:
 
   inventory_commands_db:
     image: postgres:16
-    container_name: inventory_commands
+    container_name: catalog_commands
     environment:
-      POSTGRES_DB: inventoryCommands
-      POSTGRES_USER: inventoryCommands
-      POSTGRES_PASSWORD: inventoryCommands
+      POSTGRES_DB: catalogCommands
+      POSTGRES_USER: catalogCommands
+      POSTGRES_PASSWORD: catalogCommands
     ports:
       - "5436:5432"
 
   order_request_chace:
     image: redis:7
-    container_name: order_request_cahce
+    container_name: order_queries_cahce
     ports:
       - "6379:6379"
 
   inventory_request_db:
     image: postgres:16
-    container_name: inventory_requests
+    container_name: catalog_queries
     environment:
-      POSTGRES_DB: inventoryRequests
-      POSTGRES_PASSWORD: inventoryRequest
-      POSTGRES_USER: inventoryRequest
+      POSTGRES_DB: catalogQueries
+      POSTGRES_PASSWORD: catalogQueries
+      POSTGRES_USER: catalogQueries
     ports:
       - "5437:5432"
 
@@ -79,17 +79,13 @@ services:
   kafka-0:
     # Будем использовать данный образ
     image: confluentinc/cp-kafka:8.1.0
-    # Имя контейнера
     container_name: kafka-0
-    # hostname контейнера
     hostname: kafka-0
     # Пробрасываем порты, чтоб слать в Kafka сообщения с хоста
     ports:
       - "29092:29092"
     environment:
       # Уникальный ID кластера в формате UUID
-      # Можно сгенерировать через команду
-      # docker run --rm confluentinc/cp-kafka:8.1.0 kafka-storage random-uuid
       CLUSTER_ID: ZETVJENWRjaECDUEExP_eg
       # Уникальный ID ноды внутри кластера
       KAFKA_NODE_ID: 0

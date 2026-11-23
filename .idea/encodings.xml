@@ -4,11 +4,11 @@
     <file url="file://$PROJECT_DIR$/AnalyticsService/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ApiGateway/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/AuthService/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/CardSrvice/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/InventoryCommandsService/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/InventoryRequesrService/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/CardService/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/CatalogCommandsService/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/CatalogQueriesService/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/OrderCommandService/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/OrderRequestService/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/OrderQueriesService/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/PaymantService/src/main/java" charset="UTF-8" />
   </component>
 </project>
