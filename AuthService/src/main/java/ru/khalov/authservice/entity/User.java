@@ -11,11 +11,12 @@ import java.util.UUID;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
-
+    @Column(name = "public_id", unique = true, updatable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long publicId;
+
+    @Column(name = "id", nullable = false, unique = true, updatable = false)
+    private UUID id = UUID.randomUUID();
 
     @Column(name = "email", nullable = false, unique = true)
     private String email;

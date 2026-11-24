@@ -13,7 +13,7 @@ import ru.khalov.cardsrvice.dto.responce.CardResponse;
 import ru.khalov.cardsrvice.service.CardService;
 
 @RestController
-@RequestMapping("/api/cards")
+@RequestMapping("/cards")
 @RequiredArgsConstructor
 public class CardController {
 

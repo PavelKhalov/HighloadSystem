@@ -20,8 +20,8 @@ import org.springframework.kafka.support.serializer.ErrorHandlingDeserializer;
 import org.springframework.kafka.support.serializer.JacksonJsonDeserializer;
 import org.springframework.kafka.support.serializer.JacksonJsonSerializer;
 import org.springframework.util.backoff.FixedBackOff;
-import ru.khalov.inventorycommandsservice.util.error.NonRetryableError;
-import ru.khalov.inventorycommandsservice.util.error.RetryableError;
+import ru.khalov.catalogcommandsservice.util.error.NonRetryableError;
+import ru.khalov.catalogcommandsservice.util.error.RetryableError;
 
 import java.util.HashMap;
 import java.util.Map;

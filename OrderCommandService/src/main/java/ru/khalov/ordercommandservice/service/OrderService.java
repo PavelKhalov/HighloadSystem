@@ -49,6 +49,7 @@ public class OrderService {
                     saved.getBasket(),
                     userId,
                     saved.getPrice(),
+                    saved.getStatus(),
                     saved.getCreatedAt()
             );
 
@@ -64,11 +65,10 @@ public class OrderService {
             });
         } else {
             saved.setStatus(OrderStatus.CANCELED);
-            saved = orderRepository.saveAndFlush(saved);
+            orderRepository.save(saved);
         }
 
-
-        return OrderCreateResponse.accepted(orderRepository.save(saved));
+        return OrderCreateResponse.accepted(saved);
     }
 
     private BigDecimal calculatePrice(OrderCreateRequest request){

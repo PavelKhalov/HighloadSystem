@@ -1,10 +1,10 @@
-package ru.khalov.inventoryrequesrservice;
+package ru.khalov.orderqueriesservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class InventoryRequesrServiceApplicationTests {
+class OrderRequestServiceApplicationTests {
 
     @Test
     void contextLoads() {

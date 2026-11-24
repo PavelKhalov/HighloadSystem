@@ -1,4 +1,4 @@
-package ru.khalov.inventorycommandsservice.util.error;
+package ru.khalov.catalogcommandsservice.util.error;
 
 import java.time.LocalDateTime;
 
@@ -6,9 +6,8 @@ public class NonRetryableError extends RuntimeException {
     private String message;
     private LocalDateTime timestamp;
 
-    public NonRetryableError(String message, String message1, LocalDateTime timestamp) {
+    public NonRetryableError(String message, LocalDateTime timestamp) {
         super(message);
-        this.message = message1;
         this.timestamp = timestamp;
     }
 

@@ -6,6 +6,8 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
+import org.springframework.security.oauth2.server.resource.authentication.JwtGrantedAuthoritiesConverter;
 import org.springframework.security.web.SecurityFilterChain;
 
 @EnableMethodSecurity
@@ -15,14 +17,21 @@ public class SecurityConfig {
 
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http){
+        JwtGrantedAuthoritiesConverter auth = new JwtGrantedAuthoritiesConverter();
+        auth.setAuthoritiesClaimName("role");
+        auth.setAuthorityPrefix("ROLE_");
+        JwtAuthenticationConverter conv = new JwtAuthenticationConverter();
+        conv.setJwtGrantedAuthoritiesConverter(auth);
+
         return http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(r -> r
-                        .requestMatchers("/api/inventory/**").hasRole("SELLER")
+                        .requestMatchers("/products/**").hasRole("SELLER")
                         .anyRequest().authenticated())
                 .sessionManagement(s -> s
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .oauth2ResourceServer(o -> o.jwt(jwt -> {}))
+                .oauth2ResourceServer(o -> o.jwt(j ->
+                        j.jwtAuthenticationConverter(conv)))
                 .build();
 
     }

@@ -3,7 +3,6 @@ package ru.khalov.catalogcommandsservice.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.apache.kafka.clients.producer.ProducerConfig;
 
 import java.math.BigDecimal;
 import java.time.Instant;

@@ -1,13 +1,13 @@
-package ru.khalov.catalogcommandsservice;
+package ru.khalov.orderqueriesservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class InventoryCommandsServiceApplication {
+public class OrderRequestServiceApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(InventoryCommandsServiceApplication.class, args);
+        SpringApplication.run(OrderRequestServiceApplication.class, args);
     }
 
 }

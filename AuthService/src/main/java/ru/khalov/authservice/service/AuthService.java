@@ -39,7 +39,7 @@ public class AuthService {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "Email or username already exists");
         }
 
-        User user = userRepository.save(new User(email, username.toLowerCase(), req.password(), req.role()));
+        User user = userRepository.save(new User(email, username, req.password(), req.role()));
         log.info("Registration successful!");
         return new TokenResponse(tokenService.createToken(user.getId().toString(), user.getPublicId(), user.getRole().name()));
     }

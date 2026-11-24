@@ -22,9 +22,9 @@ public class SecurityConfig {
         return http
                 .csrf(ServerHttpSecurity.CsrfSpec::disable)
                 .authorizeExchange(ex -> ex
-                        .pathMatchers("/api/auth/**", "/internal/**").permitAll()
+                        .pathMatchers("/api/auth/**").permitAll()
                         .pathMatchers("/api/cards/**").hasAnyRole("BUYER", "SELLER")
-                        .pathMatchers("/api/inventory/**", "/api/analytics/**").hasRole("SELLER")
+                        .pathMatchers("/api/catalog/**", "/api/analytics/**").hasRole("SELLER")
                         .pathMatchers("/api/orders/**").hasAnyRole("BUYER", "SELLER")
                         .anyExchange().authenticated())
                 .oauth2ResourceServer(o -> o.jwt(jwt -> jwt.jwtAuthenticationConverter(converter())))

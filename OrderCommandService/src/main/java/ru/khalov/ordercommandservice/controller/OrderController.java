@@ -13,7 +13,7 @@ import ru.khalov.ordercommandservice.service.OrderService;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/orders")
+@RequestMapping("/orders")
 public class OrderController {
 
     private final OrderService orderService;

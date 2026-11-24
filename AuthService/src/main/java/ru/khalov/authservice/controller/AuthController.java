@@ -14,7 +14,7 @@ import ru.khalov.authservice.dto.response.UserResponse;
 import ru.khalov.authservice.service.AuthService;
 
 @RestController
-@RequestMapping("/api/auth")
+@RequestMapping("/auth")
 public class AuthController {
 
     private final AuthService authService;
@@ -24,12 +24,12 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<TokenResponse> register(@Valid @RequestBody RegisterRequest req){
+    public ResponseEntity<TokenResponse> register(@RequestBody @Valid RegisterRequest req){
         return ResponseEntity.status(HttpStatus.CREATED).body(authService.reg(req));
     }
 
-    @PostMapping("/api/login")
-    public ResponseEntity<TokenResponse> login(LoginRequest req){
+    @PostMapping("/login")
+    public ResponseEntity<TokenResponse> login(@RequestBody @Valid LoginRequest req){
         return ResponseEntity.status(HttpStatus.OK).body(authService.login(req));
     }
 }
