@@ -42,7 +42,7 @@ public class KafkaConfig {
         config.put(ErrorHandlingDeserializer.VALUE_DESERIALIZER_CLASS, JacksonJsonDeserializer.class);
         config.put(JacksonJsonDeserializer.TRUSTED_PACKAGES, "ru.khalov.*");
         config.put(JacksonJsonDeserializer.USE_TYPE_INFO_HEADERS, false);
-        config.put(JacksonJsonDeserializer.VALUE_DEFAULT_TYPE, "ru.khalov.ordercommandservice.event.OrderCreaeteEvent");
+        config.put(JacksonJsonDeserializer.VALUE_DEFAULT_TYPE, "ru.khalov.ordercommandservice.event.OrderCreateEvent");
         return new DefaultKafkaConsumerFactory<>(config);
     }
 

@@ -8,7 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="ApiGateway" />
       </profile>
-      <profile name="Annotation profile for OrderRequestService" enabled="true">
+      <profile name="Annotation profile for AnalyticsService" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
@@ -19,8 +19,8 @@
         <module name="AuthService" />
         <module name="OrderCommandService" />
         <module name="OrderQueriesService" />
-        <module name="CardService" />
         <module name="AnalyticsService" />
+        <module name="CardService" />
         <module name="CatalogQueriesService" />
         <module name="PaymantService" />
       </profile>
